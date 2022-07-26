@@ -81,7 +81,7 @@ if USE_CYTHON:
 with open(os.path.join(MYPATH, 'README.md'), 'r', encoding='utf-8') as f:
     long_description = f.read()
 
-
+PLATFORM_INSTALL_REQUIRES = []
 
 class CustomBuildDocs(distutils.cmd.Command):
     """Custom command to build docs locally."""
