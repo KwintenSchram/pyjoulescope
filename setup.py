@@ -82,11 +82,6 @@ with open(os.path.join(MYPATH, 'README.md'), 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 
-if sys.platform.startswith('win'):
-    PLATFORM_INSTALL_REQUIRES = ['pypiwin32>=223']
-else:
-    PLATFORM_INSTALL_REQUIRES = []
-
 
 class CustomBuildDocs(distutils.cmd.Command):
     """Custom command to build docs locally."""
