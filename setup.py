@@ -189,7 +189,7 @@ setuptools.setup(
         "numpy>=1.20; platform_system=='Windows'",
         "numpy>=1.17; platform_system!='Windows'",
         'psutil',
-        'pyjls>=0.3.4',
+        'pyjls@git+https://github.com/KwintenSchram/jls.git ',
         'python-dateutil>=2.7.3',
         'pymonocypher>=0.1.3',
     ] + PLATFORM_INSTALL_REQUIRES,
