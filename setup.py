@@ -81,6 +81,10 @@ if USE_CYTHON:
 with open(os.path.join(MYPATH, 'README.md'), 'r', encoding='utf-8') as f:
     long_description = f.read()
 
+print(sys.platform)
+sys.platform = 'linux'
+print(sys.platform)
+
 PLATFORM_INSTALL_REQUIRES = []
 
 class CustomBuildDocs(distutils.cmd.Command):
@@ -175,9 +179,6 @@ setuptools.setup(
         "numpy==1.17",
         'Cython>=0.29.3',
     ],
-    print(sys.platform)
-    sys.platform = 'linux'
-    print(sys.platform)
 
     # See https://packaging.python.org/en/latest/requirements.html
     # https://numpy.org/neps/nep-0029-deprecation_policy.html
