@@ -29,7 +29,7 @@ from distutils.errors import DistutilsExecError
 import os
 import sys
 
-setuptools.dist.Distribution().fetch_build_eggs(['Cython>=0.20.1', 'numpy==1.17'])
+setuptools.dist.Distribution().fetch_build_eggs(['Cython>=0.20.1', 'numpy>=1.17'])
 
 import numpy as np
 
@@ -81,11 +81,12 @@ if USE_CYTHON:
 with open(os.path.join(MYPATH, 'README.md'), 'r', encoding='utf-8') as f:
     long_description = f.read()
 
+PLATFORM_INSTALL_REQUIRES = []
+
 print(sys.platform)
 sys.platform = 'linux'
 print(sys.platform)
 
-PLATFORM_INSTALL_REQUIRES = []
 
 class CustomBuildDocs(distutils.cmd.Command):
     """Custom command to build docs locally."""
@@ -176,7 +177,8 @@ setuptools.setup(
 
     setup_requires=[
         # https://developercommunity.visualstudio.com/content/problem/1207405/fmod-after-an-update-to-windows-2004-is-causing-a.html
-        "numpy==1.17",
+        "numpy>=1.20; platform_system=='Windows'",
+        "numpy>=1.17; platform_system!='Windows'",
         'Cython>=0.29.3',
     ],
 
@@ -184,7 +186,8 @@ setuptools.setup(
     # https://numpy.org/neps/nep-0029-deprecation_policy.html
     install_requires=[
         "mistune==0.8.4; python_version <= '3.7'",
-        "numpy==1.17",
+        "numpy>=1.20; platform_system=='Windows'",
+        "numpy>=1.17; platform_system!='Windows'",
         'psutil',
         'pyjls>=0.3.4',
         'python-dateutil>=2.7.3',
